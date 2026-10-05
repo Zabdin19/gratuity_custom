@@ -8,7 +8,7 @@ app_license = "mit"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["frappe/erpnext", "frappe/hrms"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -43,7 +43,7 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Company": "public/js/company.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -83,12 +83,13 @@ app_license = "mit"
 # ------------
 
 # before_install = "gratuity_custom.install.before_install"
-# after_install = "gratuity_custom.install.after_install"
+after_install = "gratuity_custom.setup.install.after_install"
+after_migrate = "gratuity_custom.setup.install.after_migrate"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "gratuity_custom.uninstall.before_uninstall"
+before_uninstall = "gratuity_custom.setup.install.before_uninstall"
 # after_uninstall = "gratuity_custom.uninstall.after_uninstall"
 
 # Integration Setup
@@ -143,13 +144,20 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Company": {
+		"validate": "gratuity_custom.events.company.validate",
+	},
+	"Gratuity": {
+		"validate": "gratuity_custom.events.gratuity.validate",
+		"on_submit": "gratuity_custom.events.gratuity.on_submit",
+		"on_cancel": "gratuity_custom.events.gratuity.on_cancel",
+	},
+	"Journal Entry": {
+		"validate": "gratuity_custom.events.journal_entry.validate",
+		"before_cancel": "gratuity_custom.events.journal_entry.before_cancel",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
@@ -252,4 +260,3 @@ app_license = "mit"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-

@@ -1,0 +1,184 @@
+{
+ "actions": [],
+ "creation": "2026-10-04 10:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 0,
+ "engine": "InnoDB",
+ "field_order": [
+  "employee",
+  "employee_name",
+  "date_of_joining",
+  "relieving_date",
+  "cost_center",
+  "column_break_service",
+  "as_of_date",
+  "service_days",
+  "non_working_days",
+  "service_years",
+  "is_eligible",
+  "section_break_amounts",
+  "salary_slip",
+  "basic_salary",
+  "column_break_amounts",
+  "previous_provision",
+  "liability",
+  "section_break_details",
+  "calculation_error",
+  "details"
+ ],
+ "fields": [
+  {
+   "columns": 2,
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.date_of_joining",
+   "fieldname": "date_of_joining",
+   "fieldtype": "Date",
+   "label": "Date of Joining",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.relieving_date",
+   "fieldname": "relieving_date",
+   "fieldtype": "Date",
+   "label": "Relieving Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "cost_center",
+   "fieldtype": "Link",
+   "label": "Cost Center",
+   "options": "Cost Center"
+  },
+  {
+   "fieldname": "column_break_service",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Accrual date, capped at the relieving date.",
+   "fieldname": "as_of_date",
+   "fieldtype": "Date",
+   "label": "As Of Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_days",
+   "fieldtype": "Int",
+   "label": "Service Days",
+   "read_only": 1
+  },
+  {
+   "description": "Leave without pay / absent days deducted from service (standard HRMS rule).",
+   "fieldname": "non_working_days",
+   "fieldtype": "Float",
+   "label": "Non-Working Days",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "service_years",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Service Years",
+   "precision": "3",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "is_eligible",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Eligible",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_amounts",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "salary_slip",
+   "fieldtype": "Link",
+   "label": "Salary Slip",
+   "options": "Salary Slip",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "basic_salary",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Basic Salary",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_amounts",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "description": "Existing provision balance for the employee, reversed by this accrual.",
+   "fieldname": "previous_provision",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Previous Provision",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "description": "Full gratuity liability as of the accrual date, posted as the new provision.",
+   "fieldname": "liability",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Liability",
+   "options": "currency",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_details",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "calculation_error",
+   "fieldtype": "Small Text",
+   "label": "Calculation Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "details",
+   "fieldtype": "Small Text",
+   "label": "Calculation Details",
+   "read_only": 1
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2026-10-04 10:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Gratuity Custom",
+ "name": "Gratuity Accrual Employee",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
